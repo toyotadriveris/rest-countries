@@ -4,6 +4,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { useSearchParams } from "react-router-dom";
 
 import styled from "styled-components";
+import CountriesMain from "../features/countries/CountriesMain";
 
 const FilterValues = [
   { value: "all", label: "All" },
@@ -28,6 +29,10 @@ const InputWithIcon = styled.div`
     font-size: 20px;
     color: var(--text);
   }
+  @media only screen and (max-width: 520px) {
+    width: auto;
+    flex-grow: 1;
+  }
 `;
 const StyledInput = styled.input`
   background-color: transparent;
@@ -45,11 +50,19 @@ const StyledInput = styled.input`
     font-family: inherit;
     color: var(--text);
   }
+  @media only screen and (max-width: 520px) {
+    width: 100%;
+    &:focus-within {
+      width: 100%;
+    }
+  }
 `;
 
 const StyledForm = styled.form`
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 2rem;
   padding: 0 2rem;
 `;
 
@@ -205,6 +218,8 @@ export default function Countries() {
           )}
         </CustomDropdown>
       </StyledForm>
+
+      <CountriesMain />
     </>
   );
 }

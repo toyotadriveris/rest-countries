@@ -20,7 +20,6 @@ const GlobalStyles = createGlobalStyle`
     --very-light-gray: hsl(0, 0%, 98%); 
 }
 
-
 &.darkmode {
     --text: hsl(0, 0%, 100%);
     --elements: hsl(209, 23%, 22%); // Dark Mode Elements
@@ -41,15 +40,14 @@ const GlobalStyles = createGlobalStyle`
   /* Creating animations for dark mode */
   transition: background-color 0.3s, border 0.3s;
 }
+
 html {
-  font-size: 62.5%;
   height: 100%;
 }
 
-body {
-    height: 100%;
-    background-color: var(--background);
-    font-family: 'Nunito Sans';
+
+#root {
+  height: 100%;
 }
 
 button {
@@ -60,12 +58,19 @@ button {
   cursor: not-allowed;
 }
 
+
+/* 
 input:focus,
 button:focus,
 textarea:focus,
 select:focus {
-  /* outline: 2px solid var(--color-brand-600);
-  outline-offset: -1px; */
+  outline: 2px solid var(--color-brand-600);
+  outline-offset: -1px; 
+} 
+*/
+
+input,button,textarea,select {
+  font-family: inherit;
 }
 
 button:has(svg) {

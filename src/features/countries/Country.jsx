@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 const StyledCountry = styled.div`
@@ -21,7 +22,7 @@ const StyledCountry = styled.div`
 
   .country-details {
     padding: 1rem 2rem;
-
+    cursor: pointer;
     color: var(--text);
     h1 {
       font-size: 2rem;
@@ -42,6 +43,13 @@ const StyledCountry = styled.div`
 
 function Country({ code = "🏳", countryName, population, region, capital }) {
   const countryCode = code.toLowerCase() || "🏳";
+
+  const navigate = useNavigate();
+
+  function handleClick() {
+    navigate(`/countries/${countryName.toLowerCase()}`);
+  }
+
   return (
     <StyledCountry>
       <div className="flagContainer">
@@ -51,7 +59,7 @@ function Country({ code = "🏳", countryName, population, region, capital }) {
         />
       </div>
 
-      <div className="country-details">
+      <div onClick={handleClick} className="country-details" role="button">
         <h1>{countryName}</h1>
         <p>
           Population: <span>{population}</span>

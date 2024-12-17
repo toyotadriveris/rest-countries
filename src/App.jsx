@@ -10,6 +10,7 @@ import AppLayout from "./ui/AppLayout";
 import GlobalStyles from "../styles/GlobalStyles";
 import "../styles/index.css";
 import { ThemeContext } from "./context/ThemeContext";
+import CountryMoreDetails from "./features/countries/CountryMoreDetails";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -29,9 +30,12 @@ function App() {
           <Routes>
             <Route element={<AppLayout />}>
               <Route index element={<Navigate replace to="home" />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/countries" element={<Countries />} />
-              <Route path="/countries/:country" element={<Country />} />
+              <Route path="home" element={<Home />} />
+              <Route path="countries" element={<Home />} />
+              <Route
+                path="countries/:country"
+                element={<CountryMoreDetails />}
+              />
               <Route path="*" element={<PageNotFound />} />
             </Route>
           </Routes>

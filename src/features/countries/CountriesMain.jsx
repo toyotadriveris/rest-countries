@@ -37,7 +37,7 @@ function CountriesMain() {
 
   const searchedCountries = filteredCountries?.filter((country) => {
     return searchQuery !== "none"
-      ? country.name.official.toLowerCase().includes(searchQuery.toLowerCase())
+      ? country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
       : filteredCountries;
   });
 
@@ -51,7 +51,7 @@ function CountriesMain() {
           <Country
             key={country.flag}
             code={country.cca2}
-            countryName={country.name.official}
+            countryName={country.name.common}
             region={country.region}
             population={country.population}
             capital={country.capital}

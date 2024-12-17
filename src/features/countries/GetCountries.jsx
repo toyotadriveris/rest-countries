@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 export function GetCountries() {
   const getCountriesReq = async () => {
     const res = await fetch(
-      "https://restcountries.com/v3.1/independent?status=true&fields=name,topLevelDomain,capital,region,subregion,population,timezones,borders,nativeName,currencies,languages,flag,cca2"
+      "https://restcountries.com/v3.1/independent?status=true&fields=name,topLevelDomain,capital,region,subregion,population,timezones,borders,nativeName,currencies,languages,flag,cca2,tld,cca3"
     );
     return res.json();
   };

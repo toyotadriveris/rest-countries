@@ -87,6 +87,7 @@ const CustomDropdown = styled.div`
     text-transform: capitalize;
     span {
       padding-top: 4px;
+      pointer-events: none;
     }
   }
 

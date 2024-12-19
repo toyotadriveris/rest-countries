@@ -54,7 +54,7 @@ function CountriesMain() {
             code={country.cca2}
             countryName={country.name.common}
             region={country.region}
-            population={country.population}
+            population={country.population.toLocaleString()}
             capital={country.capital}
           />
         ))}

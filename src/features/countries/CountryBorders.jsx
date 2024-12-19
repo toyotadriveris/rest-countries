@@ -15,7 +15,7 @@ const Container = styled.div`
 
 const ButtonsWrapper = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   width: 100%;
   text-align: center;
   gap: 1rem;

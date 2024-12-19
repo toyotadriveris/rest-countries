@@ -12,10 +12,6 @@ const CountriesLayout = styled.div`
   place-content: center;
   margin: 0 auto;
   gap: 5rem;
-
-  @media only screen and (max-width: 710px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  }
 `;
 
 const StyledH1 = styled.h1`

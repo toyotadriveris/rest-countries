@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GetCountries } from "./getCountries";
+import { GetCountries } from "./useCountries";
 import Country from "./Country";
 import Spinner from "../../ui/Spinner";
 import { useSearchParams } from "react-router-dom";

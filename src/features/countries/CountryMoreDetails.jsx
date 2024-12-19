@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { GetCountries } from "./getCountries";
+import { GetCountries } from "./useCountries";
 import Spinner from "../../ui/Spinner";
 import CountryBorders from "./CountryBorders";
 import CountryDetails from "./CountryDetails";

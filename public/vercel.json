@@ -4,12 +4,5 @@
       "source": "/(.*)",
       "destination": "/index.html"
     }
-  ],
-  "routes": [
-    { "src": "/home", "dest": "/home" },
-    { "src": "/home", "dest": "/home" },
-    { "src": "/countries", "dest": "/" },
-    { "src": "/countries/:country", "dest": "/" },
-    { "src": "/", "dest": "/" }
   ]
 }

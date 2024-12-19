@@ -1,8 +1,11 @@
-import { FaArrowLeftLong } from "react-icons/fa6";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { GetCountries } from "./getCountries";
 import Spinner from "../../ui/Spinner";
+import CountryBorders from "./CountryBorders";
+import CountryDetails from "./CountryDetails";
+import BackButton from "../../ui/BackButton";
+import FlagImg from "../../ui/FlagImg";
 
 const Layout = styled.div`
   display: flex;
@@ -16,37 +19,21 @@ const Container = styled.div`
   flex-direction: column;
   gap: 7em;
   flex-grow: 1;
-
-  .flag-img {
-    min-width: 300px;
-    max-width: 500px;
-    box-shadow: 0px 4px 14px 0px #1616162e;
+  @media only screen and (max-width: 685px) {
+    padding: 4em 3em;
+    gap: 4em;
   }
-`;
-
-const StyledButton = styled.button`
-  all: unset;
-  padding: 1rem 3rem;
-  max-width: 60px;
-  border-radius: 5px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  background-color: var(--elements);
-  color: var(--text);
-  gap: 1rem;
-  font-size: 1.4rem;
-  box-shadow: 0px 4px 14px 0px #1616162e;
-  cursor: pointer;
 `;
 
 const CountryContainer = styled.div`
   display: flex;
   align-items: center;
+  justify-content: center;
 
   gap: 6%;
-  .country-wrapper {
-    padding: 2rem;
+
+  @media only screen and (max-width: 685px) {
+    flex-direction: column;
   }
 `;
 
@@ -55,63 +42,25 @@ const CountryWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  width: 50%;
 
   min-height: 380px;
   color: var(--text);
-  .country-name {
-    font-size: 3rem;
-  }
 
-  .country-details-wrapper {
-    padding: 3rem 0;
-    margin-bottom: auto;
-    display: flex;
-    justify-content: space-between;
-    max-width: 550px;
+  @media only screen and (max-width: 1440px) {
+    width: 50%;
+  }
+  @media only screen and (max-width: 685px) {
+    width: 100%;
+  }
+`;
 
-    p {
-      font-size: 1.6rem;
-      font-weight: var(--medium);
-      span {
-        font-weight: var(--thin);
-      }
-    }
-  }
-  .country-borders {
-    display: flex;
-    gap: 1.2rem;
-    align-items: center;
-    font-size: 1.6rem;
-    font-weight: var(--medium);
-    .buttons-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-      button {
-        all: unset;
-        padding: 0.5rem 2rem;
-        background-color: var(--elements);
-        border-radius: 5px;
-        font-size: 1.4rem;
-        box-shadow: 0px 4px 14px 0px #1616162e;
-        cursor: pointer;
-        user-select: none;
-      }
-    }
-  }
+const CountryName = styled.h1`
+  font-size: 3rem;
 `;
 
 function CountryMoreDetails() {
   const { country: quiredCountry } = useParams();
   const { data, isLoading } = GetCountries();
-
-  const navigate = useNavigate();
-
-  function handleGoBack() {
-    navigate(-1);
-  }
 
   if (isLoading) return <Spinner />;
 
@@ -161,72 +110,27 @@ function CountryMoreDetails() {
     return curr.name;
   });
 
-  function goToCountry(country) {
-    navigate(`/countries/${country.toLowerCase()}`);
-  }
-
   return (
     <Layout>
       <Container>
-        <StyledButton onClick={handleGoBack}>
-          <FaArrowLeftLong />
-          Back
-        </StyledButton>
+        <BackButton />
 
         <CountryContainer>
-          <div className="flag-img">
-            <img
-              src={`https://flagcdn.com/${countryCode}.svg`}
-              alt={`The flag of ${quiredCountry}`}
-            />
-          </div>
+          <FlagImg countryCode={countryCode} quiredCountry={quiredCountry} />
 
           <CountryWrapper>
-            <h1 className="country-name">{countryName}</h1>
-            <div className="country-details-wrapper">
-              <div className="country-geo-details">
-                <p>
-                  Native Name: <span>{countryName}</span>
-                </p>
-                <p>
-                  Population: <span>{population}</span>
-                </p>
-                <p>
-                  Region: <span>{region}</span>
-                </p>
-                <p>
-                  Sub Region: <span>{subRegion}</span>
-                </p>
-                <p>
-                  Capital: <span>{capital}</span>
-                </p>
-              </div>
-              <div className="country-other-info">
-                <p>
-                  Top Level Domain: <span>{topLevelDomain}</span>
-                </p>
-                <p>
-                  Currencies: <span>{countryCurrencies.join(",")}</span>
-                </p>
-                <p>
-                  Languages: <span>{countryLanguages.join(",")}</span>
-                </p>
-              </div>
-            </div>
-            <div className="country-borders">
-              <span>Border Countries:</span>
-              <div className="buttons-wrapper">
-                {borderCountries.map((border) => (
-                  <button
-                    onClick={() => goToCountry(border)}
-                    key={border}
-                    type="button"
-                  >
-                    {border}
-                  </button>
-                ))}
-              </div>
-            </div>
+            <CountryName>{countryName}</CountryName>
+            <CountryDetails
+              countryName={countryName}
+              population={population}
+              region={region}
+              subRegion={subRegion}
+              capital={capital}
+              topLevelDomain={topLevelDomain}
+              countryCurrencies={countryCurrencies}
+              countryLanguages={countryLanguages}
+            />
+            <CountryBorders borderCountries={borderCountries} />
           </CountryWrapper>
         </CountryContainer>
       </Container>

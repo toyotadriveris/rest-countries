@@ -1,0 +1,15 @@
+{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ],
+  "routes": [
+    { "src": "/home", "dest": "/" },
+    { "src": "/home", "dest": "/" },
+    { "src": "/countries", "dest": "/" },
+    { "src": "/countries/:country", "dest": "/" },
+    { "src": "/", "dest": "/" }
+  ]
+}

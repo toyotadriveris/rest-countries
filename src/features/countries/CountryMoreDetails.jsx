@@ -72,7 +72,7 @@ function CountryMoreDetails() {
 
   const countryName = countryData[0].name.common;
 
-  const population = countryData[0].population;
+  const population = countryData[0].population.toLocaleString();
 
   const region = countryData[0].region;
 

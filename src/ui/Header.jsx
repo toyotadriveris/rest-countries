@@ -1,6 +1,7 @@
 import { IoMoonOutline, IoSunnyOutline } from "react-icons/io5";
 import styled from "styled-components";
 import { useTheme } from "../context/ThemeContext";
+import { Link } from "react-router-dom";
 
 const StyledHeader = styled.header`
   position: relative;
@@ -32,7 +33,10 @@ function Header() {
 
   return (
     <StyledHeader>
-      <h1>Where in the world?</h1>
+      <Link to="home">
+        <h1>Where in the world?</h1>
+      </Link>
+
       <button style={{ color: "var(--text)" }} onClick={toggleTheme}>
         {isTheme ? <IoSunnyOutline /> : <IoMoonOutline />}
         {isTheme ? "Light mode" : "Dark mode"}

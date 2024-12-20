@@ -16,6 +16,11 @@ const StyledButton = styled.button`
   font-size: 1.4rem;
   box-shadow: 0px 4px 14px 0px #1616162e;
   cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: hsl(from var(--elements) h 0% 70%);
+    transition: all 0.3s;
+  }
 `;
 
 function BackButton() {

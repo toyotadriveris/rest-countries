@@ -9,7 +9,7 @@ import CountriesMain from "../features/countries/CountriesMain";
 const FilterValues = [
   { value: "all", label: "All" },
   { value: "africa", label: "Africa" },
-  { value: "americas", label: "America" },
+  { value: "americas", label: "Americas" },
   { value: "asia", label: "Asia" },
   { value: "europe", label: "Europe" },
   { value: "oceania", label: "Oceania" },
